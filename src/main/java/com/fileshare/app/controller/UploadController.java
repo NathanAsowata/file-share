@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "https://file-share.nathanasowata.com")
+@CrossOrigin(origins = {"https://file-share.nathanasowata.com", "http://localhost:5173"})
 public class UploadController {
 
     private final StorageService storageService;

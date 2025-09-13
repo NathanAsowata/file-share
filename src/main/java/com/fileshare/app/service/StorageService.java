@@ -74,15 +74,17 @@ public class StorageService {
             }
             String sanitizedText = htmlSanitizerPolicy.sanitize(text);
             contentBytes = sanitizedText.getBytes();
-            originalFilename = "Text Snippet";
+            originalFilename = "snippet.txt";
             contentType = "text/plain";
             upload.setUploadType(UploadType.TEXT);
+            upload.setOriginalFilename("Text Snippet");
         } else {
             validateFile(file);
             contentBytes = file.getBytes();
             originalFilename = file.getOriginalFilename();
             contentType = file.getContentType();
             upload.setUploadType(UploadType.FILE);
+            upload.setOriginalFilename(originalFilename);
         }
 
         String shortId = generateShortId();
@@ -91,6 +93,7 @@ public class StorageService {
         ObjectMetadata metadata = new ObjectMetadata();
         metadata.setContentLength(contentBytes.length);
         metadata.setContentType(contentType);
+        metadata.addUserMetadata("original-filename", originalFilename);
 
         try (InputStream inputStream = new ByteArrayInputStream(contentBytes)) {
             s3Client.putObject(bucketName, r2ObjectKey, inputStream, metadata);
