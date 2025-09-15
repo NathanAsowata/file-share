@@ -25,7 +25,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/fileshare
       - SPRING_DATASOURCE_USERNAME=user
       - SPRING_DATASOURCE_PASSWORD=password
-      - APP_DOMAIN=https://file-share.nathanasowata.com
+      - APP_DOMAIN=https://share.nathanasowata.com
       - AWS_S3_ENDPOINT_URL=${AWS_S3_ENDPOINT_URL}
       - AWS_S3_ACCESS_KEY_ID=${AWS_S3_ACCESS_KEY_ID}
       - AWS_S3_SECRET_ACCESS_KEY=${AWS_S3_SECRET_ACCESS_KEY}
